@@ -1,7 +1,7 @@
 require "simple_config_man/version"
 require 'simple_speaker'
 
-@speaker = SimpleSpeaker.new
+@speaker = SimpleSpeaker::Speaker.new
 
 module SimpleConfigMan
   def self.configure_node(node, name = '', current = nil)
