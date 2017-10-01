@@ -42,6 +42,6 @@ module SimpleConfigMan
   end
 
   def self.speaker
-    @speaker || SimpleSpeaker::Speaker.new
+    @speaker ||= SimpleSpeaker::Speaker.new
   end
 end
