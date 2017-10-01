@@ -1,4 +1,4 @@
-require "config_man/version"
+require "simple_config_man/version"
 
 @speaker = Speaker.new
 
