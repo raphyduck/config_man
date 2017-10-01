@@ -2,7 +2,7 @@ require "config_man/version"
 
 @speaker = Speaker.new
 
-module ConfigMan
+module SimpleConfigMan
   def self.configure_node(node, name = '', current = nil)
     if name == '' || @speaker.ask_if_needed("Do you want to configure #{name}? (y/n)", 0, 'y') == 'y'
       node.each do |k, v|

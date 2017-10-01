@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "config_man/version"
+require "simple_config_man/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "config_man"
-  spec.version       = ConfigMan::VERSION
+  spec.name          = "simple_config_man"
+  spec.version       = SimpleConfigMan::VERSION
   spec.authors       = ["R"]
   spec.email         = ["raphy@hobbitton.at"]
 
   spec.summary       = %q{Ruby utilities to manage config with YAML file}
   #spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "https://github.com/raphyduck/config_man"
+  spec.homepage      = "https://github.com/raphyduck/simple_config_man"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
