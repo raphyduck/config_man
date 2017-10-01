@@ -1,4 +1,5 @@
 require "simple_config_man/version"
+require 'simple_speaker'
 
 @speaker = SimpleSpeaker.new
 
