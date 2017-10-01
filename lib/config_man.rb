@@ -1,8 +1,10 @@
 require "config_man/version"
 
+@speaker = Speaker.new
+
 module ConfigMan
   def self.configure_node(node, name = '', current = nil)
-    if name == '' || Speaker.ask_if_needed("Do you want to configure #{name}? (y/n)", 0, 'y') == 'y'
+    if name == '' || @speaker.ask_if_needed("Do you want to configure #{name}? (y/n)", 0, 'y') == 'y'
       node.each do |k, v|
         curr_v = current ? current[k] : nil
         if v.is_a?(Hash)
@@ -10,7 +12,7 @@ module ConfigMan
         elsif ['password','client_secret'].include?(k)
           node[k] = STDIN.getpass("What is your #{name} #{k}? ")
         else
-          Speaker.speak_up "What is your #{name} #{k}? [#{curr_v}] "
+          @speaker.speak_up "What is your #{name} #{k}? [#{curr_v}] "
           node[k] = STDIN.gets.strip
         end
         node[k] = curr_v if (node[k].nil? || node[k] == '') && !v.is_a?(Hash)
@@ -34,9 +36,9 @@ module ConfigMan
     config = YAML.load_file(config_file)
     default_config = YAML.load_file(config_example)
     #Let's set the first config
-    Speaker.speak_up 'The configuration file needs to be initialized.'
+    @speaker.speak_up 'The configuration file needs to be initialized.'
     config = self.configure_node(default_config, '', config)
-    Speaker.speak_up 'All set!'
+    @speaker.speak_up 'All set!'
     File.write(config_file, YAML.dump(config))
   end
 end
