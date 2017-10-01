@@ -21,18 +21,18 @@ module ConfigMan
     node
   end
 
-  def self.load_settings(config_dir, config_file)
+  def self.load_settings(config_dir, config_file, config_example)
     Dir.mkdir(config_dir) unless File.exist?(config_dir)
     unless File.exist?(config_file)
-      FileUtils.copy File.dirname(__FILE__) + '/../config/conf.yml.example', config_file
-      self.reconfigure(config_file)
+      FileUtils.copy config_example, config_file
+      self.reconfigure(config_file, config_example)
     end
     YAML.load_file(config_file)
   end
 
-  def self.reconfigure(config_file)
+  def self.reconfigure(config_file, config_example)
     config = YAML.load_file(config_file)
-    default_config = YAML.load_file(File.dirname(__FILE__) + '/../config/conf.yml.example')
+    default_config = YAML.load_file(config_example)
     #Let's set the first config
     Speaker.speak_up 'The configuration file needs to be initialized.'
     config = self.configure_node(default_config, '', config)
