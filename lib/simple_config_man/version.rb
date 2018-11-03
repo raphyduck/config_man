@@ -1,3 +1,3 @@
 module SimpleConfigMan
-  VERSION = "0.3.8.1"
+  VERSION = "0.3.9"
 end
